@@ -2,10 +2,10 @@
 
 import LoadingIcon from "@/app/components/icons/loading-icon";
 import StateContext from "@/app/contexts/state-context";
-import { Entity, GuessState } from "@/app/types/domain";
+import { GuessState } from "@/app/types/domain";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ReactNode, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 type SelectedType = "All" | "Wrong" | "Correct";
 const SelectedTypeKeys: SelectedType[] = ["All", "Correct", "Wrong"];
@@ -36,8 +36,13 @@ const Overview = () => {
     setSelectedType(type);
   };
 
+  useEffect(() => {
+    if (state.length === 0) {
+      router.push("/");
+    }
+  }, []);
+
   if (state.length === 0) {
-    router.push("/");
     return (
       <div
         role="status"
