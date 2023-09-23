@@ -4,6 +4,7 @@ import {
   Phrase,
   IrregularVerb,
   Numeric,
+  Data,
 } from "../types/domain";
 
 const words: Word[] = [
@@ -486,11 +487,11 @@ const numbers: Numeric[] = [
   },
 ];
 
-const week1_data = {
+const week1_data: { [key: string]: Data[] } = {
   words,
   sentences,
   phrases,
-  irregularVerbs,
+  "irregular verbs": irregularVerbs,
   numbers,
 };
 

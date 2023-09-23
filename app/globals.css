@@ -16,3 +16,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #0d1117;
 }
+
+nextjs-portal {
+  display: none;
+}

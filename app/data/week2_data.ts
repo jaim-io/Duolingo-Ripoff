@@ -1,4 +1,4 @@
-import { Phrase, RegularVerb, Sentence, Word } from "../types/domain";
+import { Data, Phrase, RegularVerb, Sentence, Word } from "../types/domain";
 
 const words: Word[] = [
   {
@@ -500,11 +500,11 @@ const regularVerbs: RegularVerb[] = [
   },
 ];
 
-const week2_data = {
+const week2_data: { [key: string]: Data[] } = {
   words,
   sentences,
   phrases,
-  regularVerbs,
+  "regular verbs": regularVerbs,
 };
 
 export default week2_data;

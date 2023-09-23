@@ -1,4 +1,5 @@
 import {
+  Data,
   IrregularVerb,
   Phrase,
   RegularVerb,
@@ -149,7 +150,7 @@ const words: Word[] = [
   },
   {
     type: "word",
-    italian: ["cualcosa"],
+    italian: ["qualcosa"],
     dutch: ["iets"],
   },
   {
@@ -460,12 +461,12 @@ const irregularVerbs: IrregularVerb[] = [
   },
 ];
 
-const week3_data = {
+const week3_data: { [key: string]: Data[] } = {
   words,
   sentences,
   phrases,
-  regularVerbs,
-  irregularVerbs,
+  "regular verbs": regularVerbs,
+  "irregular verbs": irregularVerbs,
 };
 
 export default week3_data;
