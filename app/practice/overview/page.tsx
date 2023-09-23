@@ -37,17 +37,17 @@ const Overview = () => {
   };
 
   if (state.length === 0) {
-    // router.push("/");
-    // return (
-    //   <div
-    //     role="status"
-    //     className="flex justify-center items-center pt-[25rem]"
-    //   >
-    //     <LoadingIcon classNames="mr-2 animate-spin fill-blue text-gray w-8 h-8 mr-3" />
-    //     Loading...
-    //     <span className="sr-only">Loading...</span>
-    //   </div>
-    // );
+    router.push("/");
+    return (
+      <div
+        role="status"
+        className="flex justify-center items-center pt-[25rem]"
+      >
+        <LoadingIcon classNames="mr-2 animate-spin fill-blue text-gray w-8 h-8 mr-3" />
+        Loading...
+        <span className="sr-only">Loading...</span>
+      </div>
+    );
   }
 
   return (

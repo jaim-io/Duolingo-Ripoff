@@ -74,7 +74,7 @@ const Home = () => {
               alt=""
               width={100}
               height={100}
-              className="hover:rotate-12"
+              className=""
             />
           </div>
           <div className="bg-semi-black shadow-xl rounded-lg border-gray border px-6 py-5">
