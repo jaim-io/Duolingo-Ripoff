@@ -1,32 +1,21 @@
 "use client";
 
-import { ReactNode, useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { ReactNode, useContext, useEffect, useState } from "react";
+import LoadingIcon from "../components/icons/loading-icon";
+import StateContext from "../contexts/state-context";
+import week1_data from "../data/week1_data";
+import week2_data from "../data/week2_data";
+import week3_data from "../data/week3_data.";
 import week4_data from "../data/week4_data";
 import {
-  Word,
-  Sentence,
-  Phrase,
-  IrregularVerb,
-  Language,
   Data,
-  translations,
+  GuessState,
+  Language,
   Translation,
+  translations,
 } from "../types/domain";
-import { useSearchParams } from "next/navigation";
-import week1_data from "../data/week1_data";
-import week3_data from "../data/week3_data.";
-import week2_data from "../data/week2_data";
-
-enum GuessState {
-  NotGuessed,
-  Correct,
-  Wrong,
-}
-
-type Entity = (Word | Sentence | Phrase | IrregularVerb) & {
-  state: GuessState;
-  id: number;
-};
 
 type Message = {
   value: string | ReactNode;
@@ -39,7 +28,7 @@ const shuffle = (array: any[]): any[] => {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
-  return array;
+  return array.map((val, indx) => ({ ...val, order: indx + 1 }));
 };
 
 const randLang = (): {
@@ -80,20 +69,32 @@ const Practice = () => {
   const searchParams = useSearchParams();
   const datasetIds = searchParams.getAll("data");
   const translateFrom = searchParams.get("trans") as Translation;
+  const [rerender, setRerender] = useState(true);
+  const router = useRouter();
 
   if (datasetIds === null || translateFrom === null) {
     throw new Error();
   }
 
-  const [state] = useState<Entity[]>(
-    shuffle(
-      [...getDatasets(datasetIds)].map((val, idx) => ({
-        ...val,
-        state: GuessState.NotGuessed,
-        id: idx,
-      }))
-    )
-  );
+  const { state, setState } = useContext(StateContext);
+  useEffect(() => {
+    setState(
+      shuffle(
+        [...getDatasets(datasetIds)].map((val, idx) => ({
+          ...val,
+          state: GuessState.NotGuessed,
+          id: idx,
+        }))
+      )
+    );
+  }, []);
+
+  useEffect(() => {
+    if (rerender && Object.values(state).length > 0) {
+      setDisplayedText(getRandomText());
+      setRerender(false);
+    }
+  }, [state]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [correctCounter, setCorrectCounter] = useState(0);
@@ -116,6 +117,10 @@ const Practice = () => {
   const [message, setMessage] = useState<Message | undefined>();
 
   const getRandomText = (): string => {
+    if (state.length === 0) {
+      return "";
+    }
+
     const rand = Math.floor(
       Math.random() * state[currentIndex][language.displayed].length
     );
@@ -124,13 +129,26 @@ const Practice = () => {
   const [displayedText, setDisplayedText] = useState(getRandomText());
 
   const next = () => {
+    if (currentIndex + 1 > Object.values(state).length - 1) {
+      router.push("/practice/overview");
+      return;
+    }
+
     setCurrentIndex((prev) => prev + 1);
-    // setLanguage(randLang());
+    if (translateFrom === "random") {
+      setLanguage(randLang());
+    }
     setInput("");
     setMessage(undefined);
   };
 
   useEffect(() => {
+    if (
+      Object.values(state).length !== 0 &&
+      currentIndex > Object.values(state).length - 1
+    ) {
+      router.push("/practice/overview");
+    }
     setDisplayedText(getRandomText());
   }, [currentIndex]);
 
@@ -153,8 +171,10 @@ const Practice = () => {
           <p className="col-span-2">Correct answers: </p>
           {state[currentIndex][language.toMatch].map((trans, index) => (
             <>
-              {index !== 0 && <p className="col-span-2" />}
-              <p className="col-span-4" key={`exp-${index}`}>
+              {index !== 0 && (
+                <p className="col-span-2" key={`exp-${index}-1`} />
+              )}
+              <p className="col-span-4" key={`exp-${index}-2`}>
                 {trans}
               </p>
             </>
@@ -162,6 +182,21 @@ const Practice = () => {
         </div>
       ),
       correct: isValid,
+    });
+
+    setState((prev) => {
+      const entity = prev[currentIndex];
+      entity.state = isValid ? GuessState.Correct : GuessState.Wrong;
+      if (
+        entity.state === GuessState.Correct ||
+        entity.state === GuessState.Wrong
+      ) {
+        entity.guess = input.trim();
+        entity.transFrom = language.displayed;
+        entity.transTo = language.toMatch;
+      }
+
+      return prev;
     });
   };
 
@@ -171,10 +206,23 @@ const Practice = () => {
     }
   };
 
+  if (Object.values(state).length === 0) {
+    return (
+      <div
+        role="status"
+        className="flex justify-center items-center pt-[25rem]"
+      >
+        <LoadingIcon classNames="mr-2 animate-spin fill-blue text-gray w-8 h-8 mr-3" />
+        Loading...
+        <span className="sr-only">Loading...</span>
+      </div>
+    );
+  }
+
   return (
     <main className="flex justify-center pt-40 pb-10" suppressHydrationWarning>
       <div className="max-w-xl">
-        <div className="flex">
+        <div className="flex relative">
           <p className="bg-semi-black shadow-xl rounded-lg px-3 py-2 mb-3 border border-gray w-fit mr-3 text-white">
             {currentIndex + 1}
             <span className="text-blue">/</span>
@@ -186,6 +234,13 @@ const Practice = () => {
           <p className="bg-semi-black shadow-xl rounded-lg px-3 py-2 mb-3 border border-gray w-fit mr-3 text-red">
             {wrongCounter}
           </p>
+          <Link
+            key={`transfrom-random`}
+            className="bg-semi-black hover:border-hover-gray border border-[rgba(240,246,252,0.1)] rounded-lg py-2 px-3 absolute right-0"
+            href={"/"}
+          >
+            Home
+          </Link>
         </div>
         {message ? (
           <div className="flex justify-center pb-4 text-white">
@@ -203,7 +258,7 @@ const Practice = () => {
                   {message.correct ? "Correct" : "Wrong"}
                 </h1>
                 <div className="pt-1">
-                  <p>{message.value}</p>
+                  <span>{message.value}</span>
                   <button
                     className="bg-gray hover:border-hover-gray border border-[rgba(240,246,252,0.1)] rounded-lg py-1 px-3 w-full mt-2 pointer-events-auto"
                     // onClick={next}

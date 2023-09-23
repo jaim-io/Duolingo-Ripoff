@@ -29,3 +29,18 @@ export const translations: {
     to: "italian",
   },
 };
+
+export enum GuessState {
+  NotGuessed,
+  Correct,
+  Wrong,
+}
+
+export type Entity = (Word | Sentence | Phrase | IrregularVerb) & {
+  id: number;
+  order: number;
+} & (
+    | { state: GuessState.NotGuessed }
+    | { state: GuessState.Correct; guess: string; transFrom: Language; transTo: Language }
+    | { state: GuessState.Wrong; guess: string; transFrom: Language; transTo: Language }
+  );

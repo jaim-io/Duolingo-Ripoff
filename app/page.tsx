@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import week1_data from "./data/week1_data";
 import week2_data from "./data/week2_data";
 import week3_data from "./data/week3_data.";
@@ -8,6 +8,8 @@ import week4_data from "./data/week4_data";
 import Link from "next/link";
 import { Language, Translation, translations } from "./types/domain";
 import { LiaRandomSolid } from "react-icons/lia";
+import StateContext from "./contexts/state-context";
+import Image from "next/image";
 
 const keysPerDataset: { [key: string]: string[] } = {
   "week 1": Object.keys(week1_data),
@@ -19,6 +21,10 @@ const keysPerDataset: { [key: string]: string[] } = {
 const Home = () => {
   const [selectedDatasets, setSelectedDatasets] = useState<string[]>([]);
   const [translateFrom, setTranslateFrom] = useState<Translation>("nl-it");
+  const { setState } = useContext(StateContext);
+  useEffect(() => {
+    setState([]);
+  }, [setState]);
 
   const toggle = (newValue: string) =>
     setSelectedDatasets((prev) => {
@@ -60,53 +66,70 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex justify-center pt-40 pb-5">
-        <div className="bg-semi-black shadow-xl rounded-lg border-gray border px-6 py-5">
-          <h1 className="pb-2 text-center">Select what you want to practice</h1>
-          <div className="divide-y divide-zinc-700 > * + *">
-            {Object.keys(keysPerDataset).map((key) => (
-              <div key={key} className="flex pt-3">
-                <button
-                  className={`shadow-xl rounded-lg px-3 py-2 mb-3 w-fit mr-3 text-blue hover:text-hover-gray ${
-                    isActiveRow(key) ? "" : "opacity-50"
-                  }`}
-                  onClick={() => toggleRow(key)}
-                >
-                  {key}
-                </button>
-                {keysPerDataset[key].map((datasetKey) => (
-                  <button
-                    className={`bg-semi-black shadow-xl rounded-lg px-3 py-2 mb-3 border border-gray w-fit mr-3 text-white hover:border-hover-gray ${
-                      isActive(`${key}.${datasetKey}`) ? "" : "opacity-50"
-                    }`}
-                    key={`${key}-${datasetKey}`}
-                    onClick={() => toggle(`${key}.${datasetKey}`)}
-                  >
-                    {datasetKey}
-                  </button>
-                ))}
-              </div>
-            ))}
+      <div className="flex justify-center pt-[7.5rem] pb-5">
+        <div className="">
+          <div className="flex justify-center">
+            <Image
+              src="/images/super-duo-thumb.png"
+              alt=""
+              width={100}
+              height={100}
+              className="hover:rotate-12"
+            />
           </div>
+          <div className="bg-semi-black shadow-xl rounded-lg border-gray border px-6 py-5">
+            <div className="divide-y divide-zinc-700 > * + *">
+              <h1 className="pb-2 text-center font-bold">
+                Select what you want to practice
+              </h1>
+              {Object.keys(keysPerDataset).map((key) => (
+                <div key={key} className="flex pt-3">
+                  <button
+                    className={`shadow-xl rounded-lg px-3 py-2 mb-3 w-fit mr-3 text-blue hover:text-hover-gray ${
+                      isActiveRow(key) ? "" : "opacity-50"
+                    }`}
+                    onClick={() => toggleRow(key)}
+                  >
+                    {key}
+                  </button>
+                  {keysPerDataset[key].map((datasetKey) => (
+                    <button
+                      className={`bg-semi-black shadow-xl rounded-lg px-3 py-2 mb-3 border border-gray w-fit mr-3 text-white hover:border-hover-gray ${
+                        isActive(`${key}.${datasetKey}`) ? "" : "opacity-50"
+                      }`}
+                      key={`${key}-${datasetKey}`}
+                      onClick={() => toggle(`${key}.${datasetKey}`)}
+                    >
+                      {datasetKey}
+                    </button>
+                  ))}
+                </div>
+              ))}
+            </div>
 
-          <div className="w-full relative mt-2 h-10">
-            <button
-              className={`absolute left-0 text-[#e8473f] bg-gray py-1.5 px-4 rounded-lg hover:bg-red hover:border-[#f85149] hover:text-white border border-red flex items-center cursor-pointer mr-3 ${
-                Object.values(selectedDatasets).length === 0
-                  ? "opacity-50 cursor-not-allowed"
-                  : ""
-              }`}
-              disabled={Object.values(selectedDatasets).length === 0}
-              onClick={() => setSelectedDatasets([])}
-            >
-              Clear
-            </button>
-            <Link
-              className="absolute right-0 bg-dark-green hover:bg-light-green text-white py-1.5 px-4 rounded-lg focus:outline-none focus:shadow-outline w-fit block"
-              href={`/practice?${createDataSearchParams()}&trans=${translateFrom}`}
-            >
-              Start
-            </Link>
+            <div className="w-full relative mt-2 h-10">
+              <button
+                className={`absolute left-0 text-[#e8473f] bg-gray py-1.5 px-4 rounded-lg hover:bg-red hover:border-[#f85149] hover:text-white border border-red flex items-center cursor-pointer mr-3 ${
+                  Object.values(selectedDatasets).length === 0
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
+                disabled={Object.values(selectedDatasets).length === 0}
+                onClick={() => setSelectedDatasets([])}
+              >
+                Clear
+              </button>
+              <Link
+                className={`absolute right-0 bg-dark-green hover:bg-light-green text-white py-1.5 px-4 rounded-lg focus:outline-none focus:shadow-outline w-fit block ${
+                  selectedDatasets.length > 0
+                    ? ""
+                    : "pointer-events-none cursor-not-allowed opacity-50"
+                }`}
+                href={`/practice?${createDataSearchParams()}&trans=${translateFrom}`}
+              >
+                Start
+              </Link>
+            </div>
           </div>
         </div>
       </div>
