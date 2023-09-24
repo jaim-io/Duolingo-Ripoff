@@ -158,6 +158,16 @@ const words: Word[] = [
     italian: ["di notte"],
     dutch: ["in de nacht"],
   },
+  {
+    type: "word",
+    italian: ["oggi"],
+    dutch: ["vandaag"],
+  },
+  {
+    type: "word",
+    italian: ["domani"],
+    dutch: ["morgen"],
+  },
 ];
 
 const sentences: Sentence[] = [
@@ -185,6 +195,46 @@ const sentences: Sentence[] = [
     type: "sentence",
     italian: ["A me piace l'opera.", "Mi piace l'opera."],
     dutch: ["Ik hou van opera."],
+  },
+  {
+    type: "sentence",
+    italian: ["Ti piace viaggiare in Italia?"],
+    dutch: ["Vind je het leuk om te reizen in Italië?"],
+  },
+  {
+    type: "sentence",
+    italian: ["Che ore sono?", "Che ora sono?"],
+    dutch: ["Hoe laat is het?"],
+  },
+  {
+    type: "sentence",
+    italian: ["Io faccio sport.", "Faccio sport."],
+    dutch: ["Ik doe aan sport."],
+  },
+  {
+    type: "sentence",
+    italian: ["Io vado in italia.", "Vado in italia."],
+    dutch: ["Ik ga naar Italië."],
+  },
+  {
+    type: "sentence",
+    italian: ["Io vado a ballare.", "Vado a ballare."],
+    dutch: ["Ik ga dansen."],
+  },
+  {
+    type: "sentence",
+    italian: ["La domenica vado in piscina."],
+    dutch: ["Op zondag ga ik naar het zwembad."],
+  },
+  {
+    type: "sentence",
+    italian: ["La domenica gioco a tennis."],
+    dutch: ["Op zondag speel ik tennis."],
+  },
+  {
+    type: "sentence",
+    italian: ["Die sera faccio una passeggiata"],
+    dutch: ["`s Avonds ga ik wandelen.", "In de avond ga ik wandelen."],
   },
 ];
 
@@ -251,10 +301,116 @@ const irregularVerbs: IrregularVerb[] = [
   },
 ];
 
+const timeTelling: Sentence[] = [
+  {
+    type: "sentence",
+    italian: ["È mezzogiorno."],
+    dutch: ["Het is middag."],
+  },
+  {
+    type: "sentence",
+    italian: ["È l'una."],
+    dutch: ["Het is een uur.", "Het is 1 uur."],
+  },
+  {
+    type: "sentence",
+    italian: ["Sono le due."],
+    dutch: ["Het is twee uur.", "Het is 2 uur."],
+  },
+  {
+    type: "sentence",
+    italian: ["Sono le due e mezzo."],
+    dutch: ["Het is half drie.", "Het is 2 uur 30."],
+  },
+  {
+    type: "sentence",
+    italian: ["Sono le cinque e venticinque."],
+    dutch: ["Het is 5 voor half vijf.", "Het is 4 uur 25."],
+  },
+  {
+    type: "sentence",
+    italian: ["Sono le cinque e venticinque."],
+    dutch: ["Het is 5 voor half vijf.", "Het is 4 uur 25."],
+  },
+  {
+    type: "sentence",
+    italian: ["Sono dieci meno un quatro."],
+    dutch: [
+      "Het is kwart voor tien.",
+      "Het is kwart voor 10.",
+      "Het is 9 uur 45.",
+    ],
+  },
+  {
+    type: "sentence",
+    italian: ["Oggi è il primo giugno."],
+    dutch: ["Vandaag is het 1 juni.", "Vandaag is het een juni."],
+  },
+  {
+    type: "sentence",
+    italian: ["Domani comincia l'inverno."],
+    dutch: ["Morgen begint de winter."],
+  },
+  {
+    type: "sentence",
+    italian: ["Di mattina vado a scuola."],
+    dutch: ["Ik ga 's morgens naar school", "Ik ga in de ochtend naar school."],
+  },
+  {
+    type: "sentence",
+    italian: ["A mezzogiorno mangio il pranzo."],
+    dutch: ["Tussen de middag eet ik lunch."],
+  },
+  {
+    type: "sentence",
+    italian: ["In estate vado in vacanza."],
+    dutch: ["In de zomer ga ik op vakantie."],
+  },
+];
+
+const phrases: Phrase[] = [
+  {
+    type: "phrase",
+    italian: ["andare al cinema"],
+    dutch: ["naar de bioscoop gaan"],
+  },
+  {
+    type: "phrase",
+    italian: ["fare sport"],
+    dutch: ["aan sport doen"],
+  },
+  {
+    type: "phrase",
+    italian: ["dormire"],
+    dutch: ["slapen"],
+  },
+  {
+    type: "phrase",
+    italian: ["fare shopping"],
+    dutch: ["winkelen"],
+  },
+  {
+    type: "phrase",
+    italian: ["guardare la televisione"],
+    dutch: ["televisie kijken"],
+  },
+  {
+    type: "phrase",
+    italian: ["ascoltare la muscia"],
+    dutch: ["naar muziek aan het luisteren"],
+  },
+  {
+    type: "phrase",
+    italian: ["uscire"],
+    dutch: ["uitgaan"],
+  },
+];
+
 const week4_data: { [key: string]: Data[] } = {
   words,
   sentences,
   "irregular verbs": irregularVerbs,
+  "time telling": timeTelling,
 };
 
 export default week4_data;

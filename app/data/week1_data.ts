@@ -198,13 +198,18 @@ const sentences: Sentence[] = [
   },
   {
     type: "sentence",
-    italian: ["Ho ... anni."],
-    dutch: ["Ik ben … jaar oud."],
+    italian: ["Ho venti anni."],
+    dutch: ["Ik ben 20 jaar oud.", "Ik ben twintig jaar oud."],
   },
   {
     type: "sentence",
     italian: ["Di dove sei?"],
     dutch: ["Waar kom je vandaan?"],
+  },
+  {
+    type: "sentence",
+    italian: ["Io sono italiano.", "Sono italiano."],
+    dutch: ["Ik ben italiaans."],
   },
   {
     type: "sentence",
