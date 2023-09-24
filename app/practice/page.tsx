@@ -261,9 +261,7 @@ const Practice = () => {
                   <span>{message.value}</span>
                   <button
                     className="bg-gray hover:border-hover-gray border border-[rgba(240,246,252,0.1)] rounded-lg py-1 px-3 w-full mt-2 pointer-events-auto"
-                    // onClick={next}
-                    onKeyDown={next}
-                    autoFocus
+                    onClick={next}
                   >
                     Continue
                   </button>

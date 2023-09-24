@@ -165,7 +165,7 @@ const words: Word[] = [
   },
   {
     type: "word",
-    italian: ["questo/questa"],
+    italian: ["questo", "questa"],
     dutch: ["deze"],
   },
   {
@@ -361,36 +361,36 @@ const regularVerbs: RegularVerb[] = [
     italian: ["loro prendono", "prendono"],
     dutch: ["hun nemen"],
   },
-  // {
-  //   type: "regular verb",
-  //   italian: ["io mangio", "mangio"],
-  //   dutch: ["ik eet"],
-  // },
-  // {
-  //   type: "regular verb",
-  //   italian: ["tu mangi", "mangi"],
-  //   dutch: ["jij eet"],
-  // },
-  // {
-  //   type: "regular verb",
-  //   italian: ["Lei mangia"],
-  //   dutch: ["u eet"],
-  // },
-  // {
-  //   type: "regular verb",
-  //   italian: ["noi mangiamo", "mangiamo"],
-  //   dutch: ["wij eten"],
-  // },
-  // {
-  //   type: "regular verb",
-  //   italian: ["voi mangiate", "mangiate"],
-  //   dutch: ["jullie eten"],
-  // },
-  // {
-  //   type: "regular verb",
-  //   italian: ["loro mangiano", "mangiano"],
-  //   dutch: ["hun eten"],
-  // },
+  {
+    type: "regular verb",
+    italian: ["io mangio", "mangio"],
+    dutch: ["ik eet"],
+  },
+  {
+    type: "regular verb",
+    italian: ["tu mangi", "mangi"],
+    dutch: ["jij eet"],
+  },
+  {
+    type: "regular verb",
+    italian: ["Lei mangia"],
+    dutch: ["u eet"],
+  },
+  {
+    type: "regular verb",
+    italian: ["noi mangiamo", "mangiamo"],
+    dutch: ["wij eten"],
+  },
+  {
+    type: "regular verb",
+    italian: ["voi mangiate", "mangiate"],
+    dutch: ["jullie eten"],
+  },
+  {
+    type: "regular verb",
+    italian: ["loro mangiano", "mangiano"],
+    dutch: ["hun eten"],
+  },
   {
     type: "regular verb",
     italian: ["io offro", "offro"],

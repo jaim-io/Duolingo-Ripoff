@@ -198,7 +198,7 @@ const sentences: Sentence[] = [
   },
   {
     type: "sentence",
-    italian: ["Ho ... ani."],
+    italian: ["Ho ... anni."],
     dutch: ["Ik ben … jaar oud."],
   },
   {

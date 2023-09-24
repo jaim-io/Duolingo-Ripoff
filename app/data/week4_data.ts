@@ -183,7 +183,7 @@ const sentences: Sentence[] = [
   },
   {
     type: "sentence",
-    italian: ["A me piace l'opera."],
+    italian: ["A me piace l'opera.", "Mi piace l'opera."],
     dutch: ["Ik hou van opera."],
   },
 ];
@@ -211,7 +211,7 @@ const irregularVerbs: IrregularVerb[] = [
   },
   {
     type: "irregular verb",
-    italian: ["voi andata", "andata"],
+    italian: ["voi andate", "andate"],
     dutch: ["jullie gaan"],
   },
   {
