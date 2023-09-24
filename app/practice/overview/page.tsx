@@ -1,20 +1,30 @@
 "use client";
 
 import LoadingIcon from "@/app/components/icons/loading-icon";
+import PageNavigation from "@/app/components/navigation/PageNavigation";
 import StateContext from "@/app/contexts/state-context";
-import { GuessState } from "@/app/types/domain";
+import { Entity, GuessState } from "@/app/types/domain";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 type SelectedType = "All" | "Wrong" | "Correct";
 const SelectedTypeKeys: SelectedType[] = ["All", "Correct", "Wrong"];
+const PageSize = 5;
 
 const Overview = () => {
   const { state } = useContext(StateContext);
   const [selectedType, setSelectedType] = useState<SelectedType>("All");
   const [shown, setShown] = useState(state);
   const router = useRouter();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const getShownPage = (): Entity[] => {
+    const min = currentPage * PageSize - PageSize;
+    const max = currentPage * PageSize;
+
+    return shown.slice(min, max);
+  };
 
   const changeSelection = (type: SelectedType) => {
     if (selectedType === type) {
@@ -90,7 +100,7 @@ const Overview = () => {
           <div className="divide-y divide-zinc-700 > * + *">
             <p className="font-bold text-center pb-2">Overview</p>
             {shown.length > 0 ? (
-              shown.map((entity) =>
+              getShownPage().map((entity) =>
                 entity.state === GuessState.NotGuessed ? undefined : (
                   <div
                     className="grid grid-cols-6 pt-2 pb-2"
@@ -134,6 +144,12 @@ const Overview = () => {
               </p>
             )}
           </div>
+          <PageNavigation
+            paginate={setCurrentPage}
+            pageNumber={currentPage}
+            pageCount={Math.ceil(shown.length / PageSize)}
+            className="pt-2"
+          />
         </div>
       </div>
     </div>
