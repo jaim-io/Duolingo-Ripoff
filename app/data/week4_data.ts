@@ -309,37 +309,43 @@ const timeTelling: Sentence[] = [
   },
   {
     type: "sentence",
+    italian: ["È mezzanotte."],
+    dutch: ["Het is middernacht."],
+  },
+  {
+    type: "sentence",
+    italian: ["È la mezza."],
+    dutch: ["Het is half twaalf."],
+  },
+  {
+    type: "sentence",
     italian: ["È l'una."],
-    dutch: ["Het is een uur.", "Het is 1 uur."],
+    dutch: ["Het is een uur."],
   },
   {
     type: "sentence",
     italian: ["Sono le due."],
-    dutch: ["Het is twee uur.", "Het is 2 uur."],
+    dutch: ["Het is twee uur."],
   },
   {
     type: "sentence",
     italian: ["Sono le due e mezzo."],
-    dutch: ["Het is half drie.", "Het is 2 uur 30."],
+    dutch: ["Het is half drie."],
   },
   {
     type: "sentence",
     italian: ["Sono le cinque e venticinque."],
-    dutch: ["Het is 5 voor half vijf.", "Het is 4 uur 25."],
+    dutch: ["Het is 5 voor half vijf."],
   },
   {
     type: "sentence",
     italian: ["Sono le cinque e venticinque."],
-    dutch: ["Het is 5 voor half vijf.", "Het is 4 uur 25."],
+    dutch: ["Het is 5 voor half vijf."],
   },
   {
     type: "sentence",
     italian: ["Sono dieci meno un quatro."],
-    dutch: [
-      "Het is kwart voor tien.",
-      "Het is kwart voor 10.",
-      "Het is 9 uur 45.",
-    ],
+    dutch: ["Het is kwart voor tien."],
   },
   {
     type: "sentence",
@@ -411,6 +417,7 @@ const week4_data: { [key: string]: Data[] } = {
   sentences,
   "irregular verbs": irregularVerbs,
   "time telling": timeTelling,
+  phrases,
 };
 
 export default week4_data;

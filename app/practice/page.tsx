@@ -7,7 +7,7 @@ import LoadingIcon from "../components/icons/loading-icon";
 import StateContext from "../contexts/state-context";
 import week1_data from "../data/week1_data";
 import week2_data from "../data/week2_data";
-import week3_data from "../data/week3_data.";
+import week3_data from "../data/week3_data";
 import week4_data from "../data/week4_data";
 import {
   Data,

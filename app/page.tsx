@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import week1_data from "./data/week1_data";
 import week2_data from "./data/week2_data";
-import week3_data from "./data/week3_data.";
+import week3_data from "./data/week3_data";
 import week4_data from "./data/week4_data";
 import Link from "next/link";
 import { Language, Translation, translations } from "./types/domain";
