@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ReactNode, useContext, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useRef, useState } from "react";
 import LoadingIcon from "../components/icons/loading-icon";
 import StateContext from "../contexts/state-context";
 import week1_data from "../data/week1_data";
@@ -46,8 +46,18 @@ const randLang = (): {
       };
 
 const getDatasets = (datasetIds: string[]): Data[] => {
+  // const nameValidator = /week\s[1-6]{1}$/i;
+
   const nestedData = datasetIds.map((datasetId) => {
     const [name, key] = datasetId.split(".");
+
+    // if (!nameValidator.test(name)) {
+    //   throw new Error("Invalid dataset(s)");
+    // }
+
+    // const datasetName = name.split(" ").join("") + "_data";
+    // return eval(`${datasetName}[key]`)
+
     switch (name) {
       case "week 1":
         return week1_data[key];
@@ -71,6 +81,7 @@ const Practice = () => {
   const translateFrom = searchParams.get("trans") as Translation;
   const [rerender, setRerender] = useState(true);
   const router = useRouter();
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
 
   if (datasetIds === null || translateFrom === null) {
     throw new Error();
@@ -220,7 +231,15 @@ const Practice = () => {
   }
 
   return (
-    <main className="flex justify-center pt-40 pb-10" suppressHydrationWarning>
+    <main
+      className="flex justify-center pt-40 h-[100vh]"
+      suppressHydrationWarning
+      onClick={() => {
+        if (message) {
+          hiddenInputRef.current?.focus();
+        }
+      }}
+    >
       <div className="max-w-xl">
         <div className="flex relative">
           <p className="bg-semi-black shadow-xl rounded-lg px-3 py-2 mb-3 border border-gray w-fit mr-3 text-white">
@@ -259,6 +278,15 @@ const Practice = () => {
                 </h1>
                 <div className="pt-1">
                   <span>{message.value}</span>
+                  <div className="relative">
+                    <input
+                      className="w-1 h-1 absolute left-0 outline-none"
+                      autoFocus
+                      onKeyDown={next}
+                      ref={hiddenInputRef}
+                    />
+                    <span className="w-1 h-1 absolute left-0 bg-semi-black z-2" />
+                  </div>
                   <button
                     className="bg-gray hover:border-hover-gray border border-[rgba(240,246,252,0.1)] rounded-lg py-1 px-3 w-full mt-2 pointer-events-auto"
                     onClick={next}

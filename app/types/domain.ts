@@ -36,11 +36,28 @@ export enum GuessState {
   Wrong,
 }
 
-export type Entity = (Word | Sentence | Phrase | IrregularVerb) & {
+export type Entity = (
+  | Word
+  | Sentence
+  | Phrase
+  | IrregularVerb
+  | RegularVerb
+  | Numeric
+) & {
   id: number;
   order: number;
 } & (
     | { state: GuessState.NotGuessed }
-    | { state: GuessState.Correct; guess: string; transFrom: Language; transTo: Language }
-    | { state: GuessState.Wrong; guess: string; transFrom: Language; transTo: Language }
+    | {
+        state: GuessState.Correct;
+        guess: string;
+        transFrom: Language;
+        transTo: Language;
+      }
+    | {
+        state: GuessState.Wrong;
+        guess: string;
+        transFrom: Language;
+        transTo: Language;
+      }
   );
