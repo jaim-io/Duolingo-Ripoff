@@ -139,17 +139,17 @@ const Overview = () => {
                                 )
                             )
                         ) : (
-                            <p className="text-center pt-2">
+                            <p className="text-center pt-4 pb-1">
                                 You&apos;ve got nothing {selectedType.toLowerCase()}!
                             </p>
                         )}
                     </div>
-                    <PageNavigation
+                    {getShownPage().length > 0 && <PageNavigation
                         paginate={setCurrentPage}
                         pageNumber={currentPage}
                         pageCount={Math.ceil(shown.length / PageSize)}
                         className="pt-2"
-                    />
+                    />}
                 </div>
             </div>
         </div>

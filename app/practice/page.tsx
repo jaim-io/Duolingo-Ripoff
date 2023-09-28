@@ -220,7 +220,7 @@ const Practice = () => {
         }
     };
 
-    const markAsCorrect = () =>
+    const markAsCorrect = () => {
         setState((prev) => {
             const entity = prev[currentIndex];
             entity.state = GuessState.Correct;
@@ -236,6 +236,30 @@ const Practice = () => {
 
             return prev;
         });
+
+        setMessage({
+            value: (
+                <div className="grid grid-cols-6">
+                    <p className="col-span-2">Original:</p>
+                    <p className="col-span-4">{displayedText}</p>
+                    <p className="col-span-2">Given:</p>
+                    <p className="col-span-4">{input.trim()}</p>
+                    <p className="col-span-2">Correct answers: </p>
+                    {state[currentIndex][language.toMatch].map((trans, index) => (
+                        <>
+                            {index !== 0 && (
+                                <p className="col-span-2" key={`exp-${index}-1`}/>
+                            )}
+                            <p className="col-span-4" key={`exp-${index}-2`}>
+                                {trans}
+                            </p>
+                        </>
+                    ))}
+                </div>
+            ),
+            correct: true,
+        })
+    }
 
     if (Object.values(state).length === 0) {
         return (
@@ -288,69 +312,69 @@ const Practice = () => {
                                 message.correct ? "border-light-green" : "border-red"
                             } rounded-lg w-[36rem] py-3 px-4 text-white bg-black font-medium`}
                         >
-              <span
-                  className={`divide-y-2 ${
-                      message.correct ? "divide-green" : "divide-red"
-                  }`}
-              >
-                <h1 className="font-bold pb-1 text-center">
-                  {message.correct ? "Correct" : "Wrong"}
-                </h1>
-                <div className="pt-1">
-                  <span>{message.value}</span>
-                  <div className="relative">
-                    <input
-                        className="w-1 h-1 absolute left-0 outline-none"
-                        autoFocus
-                        onKeyDown={next}
-                        ref={hiddenInputRef}
-                    />
-                    <span className="w-1 h-1 absolute left-0 bg-semi-black z-2"/>
-                  </div>
-                  <div className="flex justify-evenly mt-2">
-                    <button
-                        className="bg-dark-green hover:bg-light-green text-white py-1 px-3 rounded-lg focus:outline-none focus:shadow-outline w-[48%]"
-                        onClick={markAsCorrect}
-                    >
-                      Correct
-                    </button>
-                    <button
-                        className="bg-gray hover:border-hover-gray border border-[rgba(240,246,252,0.1)] rounded-lg py-1 px-3 w-[48%] pointer-events-auto"
-                        onClick={next}
-                    >
-                      Continue
-                    </button>
-                  </div>
-                </div>
-              </span>
+                          <span
+                              className={`divide-y-2 ${
+                                  message.correct ? "divide-green" : "divide-red"
+                              }`}
+                          >
+                            <h1 className="font-bold pb-1 text-center">
+                              {message.correct ? "Correct" : "Wrong"}
+                            </h1>
+                            <div className="pt-1">
+                              <span>{message.value}</span>
+                              <div className="relative">
+                                <input
+                                    className="w-1 h-1 absolute left-0 outline-none"
+                                    autoFocus
+                                    onKeyDown={next}
+                                    ref={hiddenInputRef}
+                                />
+                                <span className="w-1 h-1 absolute left-0 bg-semi-black z-2"/>
+                              </div>
+                              <div className="flex justify-between mt-2">
+                                {!message.correct && <button
+                                    className="bg-dark-green hover:bg-light-green text-white py-1 px-3 rounded-lg focus:outline-none focus:shadow-outline w-[49%]"
+                                    onClick={markAsCorrect}
+                                >
+                                    Correct
+                                </button>}
+                                  <button
+                                      className={`bg-gray hover:border-hover-gray border border-[rgba(240,246,252,0.1)] rounded-lg py-1 px-3 ${message.correct ? "w-[100%]" : "w-[49%]"} pointer-events-auto`}
+                                      onClick={next}
+                                  >
+                                  Continue
+                                </button>
+                              </div>
+                            </div>
+                          </span>
                         </div>
                     </div>
                 ) : (
                     <div className="w-full m-auto bg-semi-black shadow-xl rounded-lg px-6 py-5 mb-4 border border-gray">
-            <span className="divide-y-2 divide-blue">
-              <p className="block mb-2 ml-1 font-bold text-white">
-                Translate the following {state[currentIndex].type} from{" "}
-                  {language.displayed} to {language.toMatch}
-              </p>
-              <div className="mb-4">
-                <label className="block text-white mb-2 ml-1 mt-1">
-                  {displayedText}
-                </label>
-                <input
-                    className="shadow appearance-none border border-gray rounded-lg w-full py-1.5 px-3 text-white leading-tight focus:outline focus:outline-blue focus:shadow-outline bg-black"
-                    id="email"
-                    type="text"
-                    placeholder="Type here..."
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    required
-                    autoComplete="off"
-                    autoFocus
-                    spellCheck={false}
-                />
-              </div>
-            </span>
+                        <span className="divide-y-2 divide-blue">
+                          <p className="block mb-2 ml-1 font-bold text-white">
+                            Translate the following {state[currentIndex].type} from{" "}
+                              {language.displayed} to {language.toMatch}
+                          </p>
+                          <div className="mb-4">
+                            <label className="block text-white mb-2 ml-1 mt-1">
+                              {displayedText}
+                            </label>
+                            <input
+                                className="shadow appearance-none border border-gray rounded-lg w-full py-1.5 px-3 text-white leading-tight focus:outline focus:outline-blue focus:shadow-outline bg-black"
+                                id="email"
+                                type="text"
+                                placeholder="Type here..."
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                required
+                                autoComplete="off"
+                                autoFocus
+                                spellCheck={false}
+                            />
+                          </div>
+                        </span>
                         <button
                             className="bg-dark-green hover:bg-light-green text-white py-1.5 px-4 rounded-lg focus:outline-none focus:shadow-outline w-full block"
                             onClick={validate}
