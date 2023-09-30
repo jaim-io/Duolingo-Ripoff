@@ -329,6 +329,11 @@ const phrases: Phrase[] = [
 const regularVerbs: RegularVerb[] = [
     {
         type: "regular verb",
+        italian: ["prendere"],
+        dutch: ["nemen"],
+    },
+    {
+        type: "regular verb",
         italian: ["io prendo", "prendo"],
         dutch: ["ik neem"],
     },
@@ -359,6 +364,11 @@ const regularVerbs: RegularVerb[] = [
     },
     {
         type: "regular verb",
+        italian: ["mangiare"],
+        dutch: ["eten"],
+    },
+    {
+        type: "regular verb",
         italian: ["io mangio", "mangio"],
         dutch: ["ik eet"],
     },
@@ -386,6 +396,11 @@ const regularVerbs: RegularVerb[] = [
         type: "regular verb",
         italian: ["loro mangiano", "mangiano"],
         dutch: ["hun eten"],
+    },
+    {
+        type: "regular verb",
+        italian: ["offrire"],
+        dutch: ["aanbieden"],
     },
     {
         type: "regular verb",

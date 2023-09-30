@@ -38,8 +38,33 @@ const words: Word[] = [
     },
     {
         type: "word",
-        italian: ["la piaza"],
+        italian: ["la piazza"],
         dutch: ["het plein"],
+    },
+    {
+        type: "word",
+        italian: ["il duomo"],
+        dutch: ["de dom"],
+    },
+    {
+        type: "word",
+        italian: ["il binario"],
+        dutch: ["het spoor"],
+    },
+    {
+        type: "word",
+        italian: ["l`opsedale"],
+        dutch: ["het ziekenhuis"],
+    },
+    {
+        type: "word",
+        italian: ["la stazione centrale"],
+        dutch: ["het centraal station"],
+    },
+    {
+        type: "word",
+        italian: ["la farmacia"],
+        dutch: ["de apotheek"],
     },
 ];
 
@@ -101,12 +126,12 @@ const sentences: Sentence[] = [
     },
     {
         type: "sentence",
-        italian: ["Devi girare a destra", "Tu devi girare a destra"],
+        italian: ["Devi girare a destra.", "Tu devi girare a destra."],
         dutch: ["Je moet rechtsaf slaan."],
     },
     {
         type: "sentence",
-        italian: ["Devi andare a destra", "Tu devi andare a destra"],
+        italian: ["Devi andare a destra.", "Tu devi andare a destra."],
         dutch: ["Je moet naar rechts gaan."],
     },
     {
@@ -300,6 +325,11 @@ const phrases: Phrase[] = [
     },
     {
         type: "phrase",
+        italian: ["girare a sinistra"],
+        dutch: ["linkssaf slaan"],
+    },
+    {
+        type: "phrase",
         italian: ["andare sempre dritto"],
         dutch: ["altijd rechtdoor gaan"],
     },
@@ -312,6 +342,11 @@ const phrases: Phrase[] = [
         type: "phrase",
         italian: ["all'incrocio girare a sinistra"],
         dutch: ["op het kruispunt linksaf slaan"],
+    },
+    {
+        type: "phrase",
+        italian: ["all'incrocio girare a destra"],
+        dutch: ["op het kruispunt rechtsaf slaan"],
     },
     {
         type: "phrase",

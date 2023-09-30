@@ -234,8 +234,13 @@ const sentences: Sentence[] = [
 const irregularVerbs: IrregularVerb[] = [
     {
         type: "irregular verb",
+        italian: ["andare"],
+        dutch: ["gaan"],
+    },
+    {
+        type: "irregular verb",
         italian: ["io vado", "vado"],
-        dutch: ["ik gaan"],
+        dutch: ["ik ga"],
     },
     {
         type: "irregular verb",
@@ -261,6 +266,11 @@ const irregularVerbs: IrregularVerb[] = [
         type: "irregular verb",
         italian: ["loro vanno", "vanno"],
         dutch: ["hun gaan"],
+    },
+    {
+        type: "irregular verb",
+        italian: ["fare"],
+        dutch: ["doen"],
     },
     {
         type: "irregular verb",
@@ -332,7 +342,7 @@ const timeTelling: Sentence[] = [
     },
     {
         type: "sentence",
-        italian: ["Sono dieci meno un quatro."],
+        italian: ["Sono le dieci meno un quatro."],
         dutch: ["Het is kwart voor tien."],
     },
     {
@@ -347,17 +357,17 @@ const timeTelling: Sentence[] = [
     },
     {
         type: "sentence",
-        italian: ["Di mattina vado a scuola."],
-        dutch: ["Ik ga 's morgens naar school", "Ik ga in de ochtend naar school."],
+        italian: ["Di mattina vado a scuola.", "In mattina vado a scuola."],
+        dutch: ["Ik ga 's morgens naar school.", "Ik ga in de ochtend naar school."],
     },
     {
         type: "sentence",
-        italian: ["A mezzogiorno mangio il pranzo."],
+        italian: ["A mezzogiorno mangio il pranzo.", "Di mezzogiorno mangio il pranzo."],
         dutch: ["Tussen de middag eet ik lunch."],
     },
     {
         type: "sentence",
-        italian: ["In estate vado in vacanza."],
+        italian: ["In estate vado in vacanza.", "D'estate vado in vacanza."],
         dutch: ["In de zomer ga ik op vakantie."],
     },
 ];
