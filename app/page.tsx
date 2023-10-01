@@ -110,22 +110,26 @@ const Home = () => {
                         </div>
 
                         <div className="w-full relative mt-2 h-10">
+                            {selectedDatasets.length === 0 &&
+                                <div className={"absolute top-0 left-0 z-2 h-[2.4rem] w-[4.6rem] cursor-not-allowed"}/>}
                             <button
-                                className={`absolute left-0 text-[#e8473f] bg-gray py-1.5 px-4 rounded-lg hover:bg-red hover:border-[#f85149] hover:text-white border border-red flex items-center cursor-pointer mr-3 ${
-                                    Object.values(selectedDatasets).length === 0
-                                        ? "opacity-50 cursor-not-allowed"
+                                className={`absolute top-0 left-0 text-[#e8473f] bg-gray py-1.5 px-4 rounded-lg hover:bg-red hover:border-[#f85149] hover:text-white border border-red flex items-center cursor-pointer mr-3 ${
+                                    selectedDatasets.length === 0
+                                        ? "opacity-50 pointer-events-none"
                                         : ""
                                 }`}
-                                disabled={Object.values(selectedDatasets).length === 0}
+                                disabled={selectedDatasets.length === 0}
                                 onClick={() => setSelectedDatasets([])}
                             >
                                 Clear
                             </button>
+                            {selectedDatasets.length === 0 &&
+                                <div className={"absolute top-0 right-0 z-2 h-9 w-[4.25rem] cursor-not-allowed"}/>}
                             <Link
-                                className={`absolute right-0 bg-dark-green hover:bg-light-green text-white py-1.5 px-4 rounded-lg focus:outline-none focus:shadow-outline w-fit block ${
+                                className={`absolute top-0 right-0 bg-dark-green hover:bg-light-green text-white py-1.5 px-4 rounded-lg focus:outline-none focus:shadow-outline w-fit block ${
                                     selectedDatasets.length > 0
                                         ? ""
-                                        : "pointer-events-none cursor-not-allowed opacity-50"
+                                        : "pointer-events-none opacity-50"
                                 }`}
                                 href={`/practice?${createDataSearchParams()}&trans=${translateFrom}`}
                             >

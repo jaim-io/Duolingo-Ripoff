@@ -53,7 +53,7 @@ const words: Word[] = [
     },
     {
         type: "word",
-        italian: ["l`opsedale"],
+        italian: ["l'opsedale"],
         dutch: ["het ziekenhuis"],
     },
     {
@@ -151,8 +151,8 @@ const sentences: Sentence[] = [
     },
     {
         type: "sentence",
-        italian: ["Può prendere l'autobus numero quattro."],
-        dutch: ["Je kunt bus nummer 4 nemen.", "Je kunt bus nummer vier nemen."],
+        italian: ["Puoi prendere l'autobus numero quattro."],
+        dutch: ["Je kan bus nummer 4 nemen.", "Je kan bus nummer vier nemen.", "Je kunt bus nummer 4 nemen.", "Je kunt bus nummer vier nemen."],
     },
     {
         type: "sentence",
@@ -326,7 +326,7 @@ const phrases: Phrase[] = [
     {
         type: "phrase",
         italian: ["girare a sinistra"],
-        dutch: ["linkssaf slaan"],
+        dutch: ["linksaf slaan"],
     },
     {
         type: "phrase",
