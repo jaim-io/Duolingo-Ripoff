@@ -66,6 +66,26 @@ const words: Word[] = [
         italian: ["la farmacia"],
         dutch: ["de apotheek"],
     },
+    {
+        type: "word",
+        italian: ["la fermata"],
+        dutch: ["de halte"],
+    },
+    {
+        type: "word",
+        italian: ["prossima"],
+        dutch: ["volgende"],
+    },
+    {
+        type: "word",
+        italian: ["alla"],
+        dutch: ["bij de"],
+    },
+    {
+        type: "word",
+        italian: ["per"],
+        dutch: ["naar"],
+    },
 ];
 
 const sentences: Sentence[] = [
