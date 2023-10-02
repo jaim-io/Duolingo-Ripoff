@@ -11,13 +11,14 @@ import {useContext, useEffect, useState} from "react";
 type SelectedType = "All" | "Wrong" | "Correct";
 const SelectedTypeKeys: SelectedType[] = ["All", "Correct", "Wrong"];
 const PageSize = 5;
+const DefaultPage = 1;
 
 const Overview = () => {
     const {state} = useContext(StateContext);
     const [selectedType, setSelectedType] = useState<SelectedType>("All");
     const [shown, setShown] = useState(state);
     const router = useRouter();
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(DefaultPage);
 
     const getShownPage = (): Entity[] => {
         const min = currentPage * PageSize - PageSize;
@@ -44,6 +45,7 @@ const Overview = () => {
         }
 
         setSelectedType(type);
+        setCurrentPage(DefaultPage)
     };
 
     useEffect(() => {
