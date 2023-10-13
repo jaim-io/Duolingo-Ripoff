@@ -17,6 +17,7 @@ import {
     translations,
 } from "../types/domain";
 import week5_data from "@/app/data/week5_data";
+import week6_data from "@/app/data/week6_data";
 
 type Message = {
     value: string | ReactNode;
@@ -70,6 +71,8 @@ const getDatasets = (datasetIds: string[]): Data[] => {
                 return week4_data[key];
             case "week 5":
                 return week5_data[key];
+            case "week 6":
+                return week6_data[key];
             default:
                 throw new Error("Invalid dataset(s)");
         }

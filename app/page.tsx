@@ -11,6 +11,7 @@ import {LiaRandomSolid} from "react-icons/lia";
 import StateContext from "./contexts/state-context";
 import Image from "next/image";
 import week5_data from "@/app/data/week5_data";
+import week6_data from "@/app/data/week6_data";
 
 const keysPerDataset: { [key: string]: string[] } = {
     "week 1": Object.keys(week1_data),
@@ -18,6 +19,7 @@ const keysPerDataset: { [key: string]: string[] } = {
     "week 3": Object.keys(week3_data),
     "week 4": Object.keys(week4_data),
     "week 5": Object.keys(week5_data),
+    "week 6": Object.keys(week6_data)
 };
 
 const Home = () => {
