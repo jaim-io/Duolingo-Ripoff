@@ -78,11 +78,6 @@ const words: Word[] = [
     },
     {
         type: "word",
-        italian: ["alla"],
-        dutch: ["bij de"],
-    },
-    {
-        type: "word",
         italian: ["per"],
         dutch: ["naar"],
     },
@@ -372,6 +367,11 @@ const phrases: Phrase[] = [
         type: "phrase",
         italian: ["attraversare la piazza"],
         dutch: ["het plein oversteken"],
+    },
+    {
+        type: "phrase",
+        italian: ["alla fermata"],
+        dutch: ["bij de halte"],
     },
 ];
 

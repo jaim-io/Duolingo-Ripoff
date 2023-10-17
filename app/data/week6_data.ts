@@ -1,4 +1,4 @@
-import {Data, Phrase, Sentence, Word,} from "../types/domain";
+import {Data, Phrase, RegularVerb, Sentence, Word,} from "../types/domain";
 
 const words: Word[] = [
     {
@@ -164,15 +164,55 @@ const phrases: Phrase[] = [
     },
     {
         type: "phrase",
-        italian: ["Abbiamo ancora una domanda:"],
-        dutch: ["Wij hebben nog één vraag:"],
+        italian: ["Abbiamo ancora una domanda."],
+        dutch: ["Wij hebben nog één vraag."],
     },
 ];
+
+
+const regularVerbs: RegularVerb[] = [
+    {
+        type: "regular verb",
+        italian: ["prenotare"],
+        dutch: ["reserveren"],
+    },
+    {
+        type: "regular verb",
+        italian: ["io prenoto", "prenoto"],
+        dutch: ["ik reserveer"],
+    },
+    {
+        type: "regular verb",
+        italian: ["tu prenoti", "prenoti"],
+        dutch: ["jij reserveert"],
+    },
+    {
+        type: "regular verb",
+        italian: ["lei prenota"],
+        dutch: ["zei reserveert"],
+    },
+    {
+        type: "regular verb",
+        italian: ["noi prenotiamo", "prenotiamo"],
+        dutch: ["wij reserveren"],
+    },
+    {
+        type: "regular verb",
+        italian: ["voi prenotate", "prenotate"],
+        dutch: ["jullie reserveren"],
+    },
+    {
+        type: "regular verb",
+        italian: ["loro prenotano", "prenotano"],
+        dutch: ["hun reserveren"],
+    },
+]
 
 const week6_data: { [key: string]: Data[] } = {
     words,
     sentences,
     phrases,
+    "regular verbs": regularVerbs
 };
 
 export default week6_data;

@@ -108,7 +108,7 @@ const words: Word[] = [
     },
     {
         type: "word",
-        italian: ["il mercoledè"],
+        italian: ["il mercoledì"],
         dutch: ["woensdag"],
     },
     {
@@ -226,8 +226,8 @@ const sentences: Sentence[] = [
     },
     {
         type: "sentence",
-        italian: ["Die sera faccio una passeggiata"],
-        dutch: ["`s Avonds ga ik wandelen.", "In de avond ga ik wandelen."],
+        italian: ["Di sera faccio una passeggiata"],
+        dutch: ["'s Avonds ga ik wandelen.", "In de avond ga ik wandelen."],
     },
 ];
 

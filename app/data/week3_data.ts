@@ -253,7 +253,7 @@ const sentences: Sentence[] = [
     },
     {
         type: "sentence",
-        italian: ["Ti piace la torta di mela?"],
+        italian: ["Ti piace la torta di mele?"],
         dutch: ["Houd jij van appeltaart?"],
     },
     {
@@ -266,7 +266,7 @@ const sentences: Sentence[] = [
 const phrases: Phrase[] = [
     {
         type: "phrase",
-        italian: ["una torta di mela"],
+        italian: ["una torta di mele"],
         dutch: ["een appeltaart"],
     },
     {
@@ -276,7 +276,7 @@ const phrases: Phrase[] = [
     },
     {
         type: "phrase",
-        italian: ["un litro di acqua"],
+        italian: ["un litro d'acqua"],
         dutch: ["een liter water"],
     },
     {

@@ -15,7 +15,7 @@ const words: Word[] = [
     },
     {
         type: "word",
-        italian: ["la amica"],
+        italian: ["l'amica"],
         dutch: ["de vriendin"],
     },
     {

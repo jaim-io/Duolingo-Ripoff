@@ -169,12 +169,12 @@ const words: Word[] = [
     },
     {
         type: "word",
-        italian: ["il fadanzato", "la fadanzata"],
+        italian: ["il fidanzato", "la fidanzata"],
         dutch: ["de verloofde"],
     },
     {
         type: "word",
-        italian: ["i fadanzati"],
+        italian: ["i fidanzati"],
         dutch: ["de verloofden"],
     },
     {
@@ -238,8 +238,8 @@ const sentences: Sentence[] = [
     {
         type: "sentence",
         italian: [
-            "Ho due sorelle e un fratello.",
-            "Io ho due sorelle e un fratello.",
+            "Ho due sorelle e uno fratello.",
+            "Io ho due sorelle e uno fratello.",
         ],
         dutch: ["Ik heb twee zussen en een broer."],
     },
