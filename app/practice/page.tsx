@@ -240,6 +240,9 @@ const Practice = () => {
             return prev;
         });
 
+        setWrongCounter((prev) => prev - 1);
+        setCorrectCounter((prev) => prev + 1);
+
         setMessage({
             value: (
                 <div className="grid grid-cols-6">

@@ -33,18 +33,8 @@ const words: Word[] = [
     },
     {
         type: "word",
-        italian: ["le persone"],
-        dutch: ["de personen"],
-    },
-    {
-        type: "word",
         italian: ["gli adulti"],
         dutch: ["de volwassenen"],
-    },
-    {
-        type: "word",
-        italian: ["il mare"],
-        dutch: ["de zee"],
     },
 ];
 
@@ -159,7 +149,7 @@ const phrases: Phrase[] = [
     },
     {
         type: "phrase",
-        italian: ["a scuola"],
+        italian: ["alla scuola"],
         dutch: ["naar school"],
     },
     {
